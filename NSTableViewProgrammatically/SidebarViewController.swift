@@ -12,24 +12,17 @@ import Cocoa
 
 class SidebarViewController: NSViewController, NSTableViewDelegate, NSTableViewDataSource {
     
-    var initialized = false
     let scrollView = NSScrollView()
     let tableView = NSTableView()
     
     override func loadView() {
         self.view = NSView()
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-    }
-    
-    override func viewDidLayout() {
-        if !initialized {
-            initialized = true
-            setupView()
-            setupTableView()
-        }
+        setupView()
+        setupTableView()
     }
     
     func setupView() {
@@ -44,6 +37,7 @@ class SidebarViewController: NSViewController, NSTableViewDelegate, NSTableViewD
         self.view.addConstraint(NSLayoutConstraint(item: self.scrollView, attribute: .top, relatedBy: .equal, toItem: self.view, attribute: .top, multiplier: 1.0, constant: 23))
         self.view.addConstraint(NSLayoutConstraint(item: self.scrollView, attribute: .right, relatedBy: .equal, toItem: self.view, attribute: .right, multiplier: 1.0, constant: 0))
         self.view.addConstraint(NSLayoutConstraint(item: self.scrollView, attribute: .bottom, relatedBy: .equal, toItem: self.view, attribute: .bottom, multiplier: 1.0, constant: 0))
+        
         tableView.frame = scrollView.bounds
         tableView.delegate = self
         tableView.dataSource = self
@@ -52,18 +46,22 @@ class SidebarViewController: NSViewController, NSTableViewDelegate, NSTableViewD
         scrollView.drawsBackground = false
         tableView.backgroundColor = NSColor.clear
         tableView.appearance = NSAppearance(named: NSAppearance.Name.vibrantDark)
-
+        
         let col = NSTableColumn(identifier: NSUserInterfaceItemIdentifier(rawValue: "col"))
         col.minWidth = 200
         tableView.addTableColumn(col)
         
+//        tableView.addTableColumn(col)
+        
         scrollView.documentView = tableView
         scrollView.hasHorizontalScroller = false
         scrollView.hasVerticalScroller = true
+        
+        tableView.allowsColumnResizing = true
     }
     
     func numberOfRows(in tableView: NSTableView) -> Int {
-        return 100
+        return 5
     }
     
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
@@ -74,6 +72,7 @@ class SidebarViewController: NSViewController, NSTableViewDelegate, NSTableViewD
         text.drawsBackground = false
         text.isBordered = false
         text.translatesAutoresizingMaskIntoConstraints = false
+        
         cell.addConstraint(NSLayoutConstraint(item: text, attribute: .centerY, relatedBy: .equal, toItem: cell, attribute: .centerY, multiplier: 1, constant: 0))
         cell.addConstraint(NSLayoutConstraint(item: text, attribute: .left, relatedBy: .equal, toItem: cell, attribute: .left, multiplier: 1, constant: 13))
         cell.addConstraint(NSLayoutConstraint(item: text, attribute: .right, relatedBy: .equal, toItem: cell, attribute: .right, multiplier: 1, constant: -13))
@@ -86,4 +85,5 @@ class SidebarViewController: NSViewController, NSTableViewDelegate, NSTableViewD
         return rowView
     }
     
+
 }
