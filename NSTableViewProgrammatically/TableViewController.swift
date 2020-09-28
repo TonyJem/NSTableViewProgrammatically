@@ -9,14 +9,10 @@
 //https://gist.github.com/kitx/a80bec25661b985118a55ca33ecfdff2
 
 import Cocoa
-
-//let tableViewFrame = NSRect(x: 0, y: 0, width: 100, height: 500)
-
 // MARK: - Data
 let days = ["I", "II", "III"]
 let hours = ["9:00 - 10:00", "11:00 - 12:00", "8:00 - 16:00"]
 
-// MARK: -
 class TableViewController: NSViewController {
     // MARK: - Properties
     let scrollView = NSScrollView()
@@ -34,8 +30,7 @@ class TableViewController: NSViewController {
         return tableView
     }()
     
-    let column = NSTableColumn()
-    let column2 = NSTableColumn()
+    var columns: [NSTableColumn] = []
     
     
     //    MARK: - Start here:
@@ -45,17 +40,26 @@ class TableViewController: NSViewController {
         tableView.dataSource = self
         tableView.delegate = self
         
-        column.width = 100
-        //        column2.width = tableViewFrame.size.width
-        column2.width = 200
-        column2.title = days[2]
+        // Create collumn instances:
+        let column0 = NSTableColumn()
+        column0.width = 100
+        column0.title = days[0]
+        columns.append(column0)
         
+        let column1 = NSTableColumn()
+        column1.width = 200
+        column1.title = days[1]
+        columns.append(column1)
+        
+        let column2 = NSTableColumn()
+        column2.width = 300
+        column2.title = days[2]
+        columns.append(column2)
         
         // Add collumn to table:
-        tableView.addTableColumn(column)
-        tableView.addTableColumn(column2)
-        
-        
+        tableView.addTableColumn(columns[0])
+        tableView.addTableColumn(columns[1])
+        tableView.addTableColumn(columns[2])
         
         // Tell the scroll view about the table view,
         // by setting the documentView to our table view:
@@ -64,16 +68,18 @@ class TableViewController: NSViewController {
     
     // Loading a view controller without a NIB requires that we
     // override loadView and provide our own view instead
+    
     override func loadView() {
         view = scrollView
     }
+    
 }
 
 
 // MARK: - Extentions
 extension TableViewController: NSTableViewDataSource {
     func numberOfRows(in tableView: NSTableView) -> Int {
-        return days.count
+        return 1
     }
 }
 
@@ -84,10 +90,18 @@ extension TableViewController: NSTableViewDelegate {
     
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
         
+        var cellContant = ""
+        switch tableColumn?.title {
+        case "I":
+            cellContant = hours[0]
+        case "II":
+            cellContant = hours[1]
+        case "III":
+            cellContant = hours[2]
+        default:
+            cellContant = "default"
+        }
         
-        
-        
-        
-        return NSTextField(labelWithString: "Cell \(row + 1)")
+        return NSTextField(labelWithString: cellContant)
     }
 }
