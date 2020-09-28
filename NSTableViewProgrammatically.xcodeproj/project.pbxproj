@@ -11,6 +11,7 @@
 		3A8F11212521A894002AA5C1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8F11202521A894002AA5C1 /* ViewController.swift */; };
 		3A8F11232521A895002AA5C1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A8F11222521A895002AA5C1 /* Assets.xcassets */; };
 		3A8F11262521A895002AA5C1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A8F11242521A895002AA5C1 /* Main.storyboard */; };
+		3A8F112F2521A8E3002AA5C1 /* SidebarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8F112E2521A8E3002AA5C1 /* SidebarViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +22,7 @@
 		3A8F11252521A895002AA5C1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3A8F11272521A895002AA5C1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3A8F11282521A895002AA5C1 /* NSTableViewProgrammatically.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NSTableViewProgrammatically.entitlements; sourceTree = "<group>"; };
+		3A8F112E2521A8E3002AA5C1 /* SidebarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +57,7 @@
 			children = (
 				3A8F111E2521A894002AA5C1 /* AppDelegate.swift */,
 				3A8F11202521A894002AA5C1 /* ViewController.swift */,
+				3A8F112E2521A8E3002AA5C1 /* SidebarViewController.swift */,
 				3A8F11222521A895002AA5C1 /* Assets.xcassets */,
 				3A8F11242521A895002AA5C1 /* Main.storyboard */,
 				3A8F11272521A895002AA5C1 /* Info.plist */,
@@ -134,6 +137,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3A8F11212521A894002AA5C1 /* ViewController.swift in Sources */,
+				3A8F112F2521A8E3002AA5C1 /* SidebarViewController.swift in Sources */,
 				3A8F111F2521A894002AA5C1 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
